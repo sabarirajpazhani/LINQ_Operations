@@ -29,10 +29,26 @@ namespace LINQ_Operation
                 Console.WriteLine(word);
             }
         }
+
+        public static void PrimarySorting()
+        {
+            String[] words = { "the", "quick", "brown", "fox", "jumps" };
+            var queery = from word in words
+                         orderby word.Substring(0,1)
+                         select word;
+
+            foreach (var word in queery)
+            {
+                Console.WriteLine(word);
+            }
+        }
         static void Main(string[] args)
         {
-            SortingMethod();
+
             WhereMethod();
+            SortingMethod();
+            PrimarySorting();    //Sorting based on one Condition
+            SecondarySorting();
         }
     }
 }
