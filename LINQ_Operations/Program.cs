@@ -15,6 +15,12 @@ namespace LINQ_Operation
             {
                 Console.WriteLine(num);
             }
+
+        //Output: 2
+        //        4
+        //        6
+        //        8
+
         }
 
         public static void SortingMethod()
@@ -28,6 +34,15 @@ namespace LINQ_Operation
             {
                 Console.WriteLine(word);
             }
+
+
+            //Output
+            //    quick
+            //    brown
+            //    jumps
+            //    the
+            //    fox
+
         }
 
         public static void PrimarySorting()
@@ -41,14 +56,60 @@ namespace LINQ_Operation
             {
                 Console.WriteLine(word);
             }
+
+            //Output
+            //    brown
+            //    fox
+            //    jumps
+            //    quick
+            //    the
+        }
+
+        public static void SecondarySorting()
+        {
+            String[] words = { "the", "quick", "brown", "fox", "jumps" };
+            var queery = from word in words
+                         orderby word.Length, word.Substring(0, 1)
+                         select word;
+
+            foreach (var word in queery)
+            {
+                Console.WriteLine(word);
+            }
+
+            //output
+
+            //    fox
+            //    the
+            //    brown
+            //    jumps
+            //    quick
+
+        }
+
+        public static void Filtering()
+        {
+            String[] words = { "the", "quick", "brown", "fox", "jumps" };
+            var queery = from word in words
+                         orderby word.Length==3 && word.Substring(0, 1)=="f"
+                         select word;
+
+            foreach (var word in queery)
+            {
+                Console.WriteLine(word);
+            }
+
+            //Output:
+            //fox
         }
         static void Main(string[] args)
         {
 
-            WhereMethod();
-            SortingMethod();
-            PrimarySorting();    //Sorting based on one Condition
-            SecondarySorting();
+            //WhereMethod();
+            //SortingMethod();
+            //PrimarySorting();    //Sorting based on one Condition
+            //SecondarySorting();   // Based on Two Condition
+            Filtering();
         }
     }
 }
